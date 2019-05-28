@@ -40,18 +40,30 @@ public class BloonTest {
         Bloon bloon3 = new Bloon("green");
         Bloon bloon4 = new Bloon("yellow");
         Bloon bloon5 = new Bloon("pink");
+        Bloon bloon6 = new Bloon("cyan");
+        Bloon bloon7 = new Bloon("black");
+        Bloon bloon8 = new Bloon("clay");
+        Bloon bloon9 = new Bloon("lead");
 
         assertEquals(Color.RED, bloon1.getColor());
         assertEquals(Color.BLUE, bloon2.getColor());
         assertEquals(Color.GREEN, bloon3.getColor());
         assertEquals(Color.YELLOW, bloon4.getColor());
         assertEquals(Color.PINK, bloon5.getColor());
+        assertEquals(Color.CYAN, bloon6.getColor());
+        assertEquals(Color.BLACK, bloon7.getColor());
+        assertEquals(new Color(224, 155, 76), bloon8.getColor());
+        assertEquals(Color.GRAY, bloon9.getColor());
 
         assertEquals(750, bloon1.getSpeed());
         assertEquals(650, bloon2.getSpeed());
         assertEquals(550, bloon3.getSpeed());
         assertEquals(450, bloon4.getSpeed());
         assertEquals(350, bloon5.getSpeed());
+        assertEquals(250, bloon6.getSpeed());
+        assertEquals(150, bloon7.getSpeed());
+        assertEquals(1000, bloon8.getSpeed());
+        assertEquals(1500, bloon9.getSpeed());
     }
 
     @Test
