@@ -31,9 +31,29 @@ public class BloonTest {
         assertEquals(7, bloon7.layers);
         assertEquals(8, bloon8.layers);
         assertEquals(9, bloon9.layers);
-
     }
-  
+
+    @Test
+    public void testBloonAttributes(){
+        Bloon bloon1 = new Bloon("red");
+        Bloon bloon2 = new Bloon("blue");
+        Bloon bloon3 = new Bloon("green");
+        Bloon bloon4 = new Bloon("yellow");
+        Bloon bloon5 = new Bloon("pink");
+
+        assertEquals(Color.RED, bloon1.getColor());
+        assertEquals(Color.BLUE, bloon2.getColor());
+        assertEquals(Color.GREEN, bloon3.getColor());
+        assertEquals(Color.YELLOW, bloon4.getColor());
+        assertEquals(Color.PINK, bloon5.getColor());
+
+        assertEquals(750, bloon1.getSpeed());
+        assertEquals(650, bloon2.getSpeed());
+        assertEquals(550, bloon3.getSpeed());
+        assertEquals(450, bloon4.getSpeed());
+        assertEquals(350, bloon5.getSpeed());
+    }
+
     @Test
     public void testBloonsPop(){
         Bloon bloon = new Bloon("lead");
