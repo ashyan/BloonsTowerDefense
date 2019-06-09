@@ -247,9 +247,14 @@ public class BloonsWindow extends JPanel implements ActionListener, KeyListener,
 			if (BloonsRunner.gamePhase.equals("game")) {
 				for (int i = 0; i < BloonsRunner.currentBloons.length; i ++) {
 					if (BloonsRunner.currentBloons[i].getCoordinates() != null && BloonsRunner.currentBloons[i].getCoordinates() != new int[]{-1, -1}) {
+						int[] offset = BloonsRunner.currentBloons[i].calculateTileOffset(BloonsRunner.currentBloons[i].direction);
+
+						int xCoordAdd = offset[0];
+						int yCoordAdd = offset[1];
+
 						g.setColor(BloonsRunner.currentBloons[i].getColor());
-						g.fillOval((BloonsRunner.currentBloons[i].getCoordinates()[0] * BloonsRunner.PATH_WIDTH) + 15, (BloonsRunner.currentBloons[i].getCoordinates()[1] * BloonsRunner.PATH_WIDTH) + 10, BloonsRunner.PATH_WIDTH - 30, BloonsRunner.PATH_WIDTH - 20);
-						g.fillOval((BloonsRunner.currentBloons[i].getCoordinates()[0] * BloonsRunner.PATH_WIDTH) + 22, (BloonsRunner.currentBloons[i].getCoordinates()[1] * BloonsRunner.PATH_WIDTH) + 37, 6, 6);
+						g.fillOval((BloonsRunner.currentBloons[i].getCoordinates()[0] * BloonsRunner.PATH_WIDTH) + 15 + xCoordAdd, (BloonsRunner.currentBloons[i].getCoordinates()[1] * BloonsRunner.PATH_WIDTH) + 10 + yCoordAdd, BloonsRunner.PATH_WIDTH - 30, BloonsRunner.PATH_WIDTH - 20);
+						g.fillOval((BloonsRunner.currentBloons[i].getCoordinates()[0] * BloonsRunner.PATH_WIDTH) + 22 + xCoordAdd, (BloonsRunner.currentBloons[i].getCoordinates()[1] * BloonsRunner.PATH_WIDTH) + 37 + yCoordAdd, 6, 6);
 					}
 				}
 			}
@@ -452,8 +457,6 @@ public class BloonsWindow extends JPanel implements ActionListener, KeyListener,
 				if (startRoundButton.checkCoordinates(mouseX, mouseY) && isSelectingMonkey == "no") {
 					startRound();
 				}
-			} else if (BloonsRunner.gamePhase.equals("game")) {
-
 			}
 
 			if (isSelectingMonkey.equals("no")) {
