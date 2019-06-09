@@ -47,10 +47,10 @@ public class BloonsWindow extends JPanel implements ActionListener, KeyListener,
 		if (BloonsRunner.phase.equals("game")) {
 			// If it's game, move the bloons and summon new ones
 			if (BloonsRunner.gamePhase.equals("game")) {
-				for (int i = 0; i < BloonsRunner.currentBloons.length; i ++) {
-					BloonsRunner.currentBloons[i].move(BloonsRunner.map.getCoordinates());
-					if (BloonsRunner.currentBloons[i].needsToSummonNextBloon.equals("true") && i + 1 != BloonsRunner.currentBloons.length) {
-						BloonsRunner.currentBloons[i + 1].initiate(BloonsRunner.map.getCoordinates());
+				for (int i = 0; i < BloonsRunner.currentBloons.size(); i ++) {
+					BloonsRunner.currentBloons.get(i).move(BloonsRunner.map.getCoordinates());
+					if (BloonsRunner.currentBloons.get(i).needsToSummonNextBloon.equals("true") && i + 1 != BloonsRunner.currentBloons.size()) {
+						BloonsRunner.currentBloons.get(i+1).initiate(BloonsRunner.map.getCoordinates());
 					}
 				}
 
@@ -255,8 +255,6 @@ public class BloonsWindow extends JPanel implements ActionListener, KeyListener,
 						g.setColor(BloonsRunner.currentBloons[i].getColor());
 						g.fillOval((BloonsRunner.currentBloons[i].getCoordinates()[0] * BloonsRunner.PATH_WIDTH) + 15 + xCoordAdd, (BloonsRunner.currentBloons[i].getCoordinates()[1] * BloonsRunner.PATH_WIDTH) + 10 + yCoordAdd, BloonsRunner.PATH_WIDTH - 30, BloonsRunner.PATH_WIDTH - 20);
 						g.fillOval((BloonsRunner.currentBloons[i].getCoordinates()[0] * BloonsRunner.PATH_WIDTH) + 22 + xCoordAdd, (BloonsRunner.currentBloons[i].getCoordinates()[1] * BloonsRunner.PATH_WIDTH) + 37 + yCoordAdd, 6, 6);
-					}
-				}
 			}
 
 			// Draw monkey if you're selecting it
@@ -489,7 +487,7 @@ public class BloonsWindow extends JPanel implements ActionListener, KeyListener,
 				BloonsRunner.gamePhase = "pregame";
 				BloonsRunner.round = 0;
 				BloonsRunner.currentBloons = null;
-				BloonsRunner.maps = BloonsRunner.getBloonTracks();
+				BloonsRunner.maps = BloonsRunner.createBloonTracks();
 				BloonsRunner.lastRound = 0;
 				BloonsRunner.health = 50;
 				BloonsRunner.money = 100;
@@ -505,8 +503,8 @@ public class BloonsWindow extends JPanel implements ActionListener, KeyListener,
 	public void startRound() {
 		if (BloonsRunner.lastRound == BloonsRunner.round) {
 			BloonsRunner.round ++;
-			BloonsRunner.currentBloons = BloonsRunner.maps[BloonsRunner.round - 1];
-			BloonsRunner.currentBloons[0].initiate(BloonsRunner.map.getCoordinates());
+			BloonsRunner.currentBloons = BloonsRunner.maps.get(BloonsRunner.round - 1);
+			BloonsRunner.currentBloons.get(0).initiate(BloonsRunner.map.getCoordinates());
 			BloonsRunner.gamePhase = "game";
 		}
 	}
@@ -516,7 +514,7 @@ public class BloonsWindow extends JPanel implements ActionListener, KeyListener,
 		BloonsRunner.lastRound ++;
 		BloonsRunner.money += 100 + (BloonsRunner.round * 10);
 		BloonsRunner.gamePhase = "pregame";
-		if (BloonsRunner.round == BloonsRunner.maps.length) {
+		if (BloonsRunner.round == BloonsRunner.maps.size()) {
 			BloonsRunner.gamePhase = "won";
 			BloonsRunner.phase = "postgame";
 		}
@@ -524,8 +522,8 @@ public class BloonsWindow extends JPanel implements ActionListener, KeyListener,
 
 	// Pretty self explanatory
 	public boolean checkIfAllBloonsDead() {
-		for (int i = 0; i < BloonsRunner.currentBloons.length; i ++) {
-			if (BloonsRunner.currentBloons[i].getCoordinates() == null || BloonsRunner.currentBloons[i].getCoordinates()[0] >= 0) return false;
+		for (int i = 0; i < BloonsRunner.currentBloons.size(); i ++) {
+			if (BloonsRunner.currentBloons.get(i).getCoordinates() == null || BloonsRunner.currentBloons.get(i).getCoordinates()[0] >= 0) return false;
 		}
 		return true;
 	}
