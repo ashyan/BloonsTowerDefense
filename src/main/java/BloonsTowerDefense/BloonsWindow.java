@@ -281,6 +281,7 @@ public class BloonsWindow extends JPanel implements ActionListener, KeyListener,
 					}
 				}
 
+
 				// Draw shop
 				MonkeySprite.drawPreview(g, BloonsRunner.WIDTH - (BloonsRunner.PATH_WIDTH * 2), 0);
 				g.setFont(new Font("Verdana", Font.BOLD, 10));
@@ -293,9 +294,9 @@ public class BloonsWindow extends JPanel implements ActionListener, KeyListener,
 				g.drawString("$" + NinjaSprite.price, (BloonsRunner.WIDTH - 50) + 5, BloonsRunner.PATH_WIDTH + 25);
 
 				SuperMonkeySprite.drawPreview(g, BloonsRunner.WIDTH - (BloonsRunner.PATH_WIDTH * 2), BloonsRunner.PATH_WIDTH * 2);
-				g.setFont(new Font("Verdana", Font.BOLD, 10));
-				g.setColor(Color.WHITE);
-				g.drawString("$" + SuperMonkeySprite.price, (BloonsRunner.WIDTH - 50) + 5, (BloonsRunner.PATH_WIDTH * 2) + 25);
+        g.setFont(new Font("Verdana", Font.BOLD, 10));
+        g.setColor(Color.WHITE);
+        g.drawString("$" + SuperMonkeySprite.price, (BloonsRunner.WIDTH - 50) -2, (BloonsRunner.PATH_WIDTH * 2) + 25);
 
 				// Draw each currently purchased monkey and its bullets
 				for (MonkeySprite m : MonkeySprite.monkeys) {

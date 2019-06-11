@@ -1,5 +1,7 @@
 package BloonsTowerDefense;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.awt.Color;
 
 public class Bloon {
@@ -33,33 +35,19 @@ public class Bloon {
 	}
 	
 	public Color getColor() {
-		switch (layers) {
-			case (1): return Color.RED;
-			case (2): return Color.BLUE;
-			case (3): return Color.GREEN;
-			case (4): return Color.YELLOW;
-			case (5): return Color.PINK;
-			case (6): return Color.CYAN;
-			case (7): return Color.BLACK;
-			case (8): return new Color(224, 155, 76);
-			case (9): return Color.GRAY;
-			default: return null;
+		Color[] array = { null ,Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.PINK, Color.CYAN, Color.BLACK, new Color(224, 155, 76), Color.GRAY};
+		if(layers >=1 && layers <= array.length){
+			return array[layers];
 		}
+		return null;
 	}
 	
 	public int getSpeed() {
-		switch (layers) {
-			case (1): return 750;
-			case (2): return 650;
-			case (3): return 550;
-			case (4): return 450;
-			case (5): return 350;
-			case (6): return 250;
-			case (7): return 150;
-			case (8): return 1000;
-			case (9): return 1500;
-			default: return -1;
+		int[] array = {-1 ,750, 650, 550, 450, 350, 250, 150, 1000, 1500};
+		if(layers >=1 && layers <= array.length){
+			return array[layers];
 		}
+		return -1;
 	}
 	
 	public int[] getCoordinates() {
