@@ -17,14 +17,14 @@ public class DartProjectile extends Projectile {
 	
 	public void popBloons() {
 		if (reachedTarget()) {
-			for (int i = 0; i < BloonsRunner.currentBloons.length; i ++) {
-				if (BloonsRunner.currentBloons[i].getCoordinates() == null) continue;
+			for (int i = 0; i < BloonsRunner.currentBloons.size(); i ++) {
+				if (BloonsRunner.currentBloons.get(i).getCoordinates() == null) continue;
 				
-				int xCoordOfBloon = (BloonsRunner.currentBloons[i].getCoordinates()[0] * BloonsRunner.PATH_WIDTH) + (BloonsRunner.PATH_WIDTH / 2);
-				int yCoordOfBloon = (BloonsRunner.currentBloons[i].getCoordinates()[1] * BloonsRunner.PATH_WIDTH) + (BloonsRunner.PATH_WIDTH / 2);
+				int xCoordOfBloon = (BloonsRunner.currentBloons.get(i).getCoordinates()[0] * BloonsRunner.PATH_WIDTH) + (BloonsRunner.PATH_WIDTH / 2);
+				int yCoordOfBloon = (BloonsRunner.currentBloons.get(i).getCoordinates()[1] * BloonsRunner.PATH_WIDTH) + (BloonsRunner.PATH_WIDTH / 2);
 				
 				if (xTarget == xCoordOfBloon && yTarget == yCoordOfBloon) {
-					BloonsRunner.currentBloons[i].pop();
+					BloonsRunner.currentBloons.get(i).pop();
 				}
 			}
 		}

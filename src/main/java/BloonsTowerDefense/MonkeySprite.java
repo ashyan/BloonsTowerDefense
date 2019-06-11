@@ -20,11 +20,11 @@ public class MonkeySprite extends Sprite {
 	public void shoot() {
 		if (!BloonsRunner.gamePhase.equals("game")) return;
 		if (currentDelay >= projectileDelay) {
-			for (int i = 0; i < BloonsRunner.currentBloons.length; i ++) {
-				if (BloonsRunner.currentBloons[i].getCoordinates() == null) continue;
+			for (int i = 0; i < BloonsRunner.currentBloons.size(); i ++) {
+				if (BloonsRunner.currentBloons.get(i).getCoordinates() == null) continue;
 				
-				int xCoordOfBloon = (BloonsRunner.currentBloons[i].getCoordinates()[0] * BloonsRunner.PATH_WIDTH) + (BloonsRunner.PATH_WIDTH / 2);
-				int yCoordOfBloon = (BloonsRunner.currentBloons[i].getCoordinates()[1] * BloonsRunner.PATH_WIDTH) + (BloonsRunner.PATH_WIDTH / 2);
+				int xCoordOfBloon = (BloonsRunner.currentBloons.get(i).getCoordinates()[0] * BloonsRunner.PATH_WIDTH) + (BloonsRunner.PATH_WIDTH / 2);
+				int yCoordOfBloon = (BloonsRunner.currentBloons.get(i).getCoordinates()[1] * BloonsRunner.PATH_WIDTH) + (BloonsRunner.PATH_WIDTH / 2);
 				
 				// Using distance formula to see if bloon is within range
 				if (Math.sqrt(Math.pow(xCoordOfBloon - (x + BloonsRunner.PATH_WIDTH / 2), 2) + Math.pow(yCoordOfBloon - (y + BloonsRunner.PATH_WIDTH / 2), 2)) < radius) {

@@ -31,9 +31,41 @@ public class BloonTest {
         assertEquals(7, bloon7.layers);
         assertEquals(8, bloon8.layers);
         assertEquals(9, bloon9.layers);
-
     }
-  
+
+    @Test
+    public void testBloonAttributes(){
+        Bloon bloon1 = new Bloon("red");
+        Bloon bloon2 = new Bloon("blue");
+        Bloon bloon3 = new Bloon("green");
+        Bloon bloon4 = new Bloon("yellow");
+        Bloon bloon5 = new Bloon("pink");
+        Bloon bloon6 = new Bloon("cyan");
+        Bloon bloon7 = new Bloon("black");
+        Bloon bloon8 = new Bloon("clay");
+        Bloon bloon9 = new Bloon("lead");
+
+        assertEquals(Color.RED, bloon1.getColor());
+        assertEquals(Color.BLUE, bloon2.getColor());
+        assertEquals(Color.GREEN, bloon3.getColor());
+        assertEquals(Color.YELLOW, bloon4.getColor());
+        assertEquals(Color.PINK, bloon5.getColor());
+        assertEquals(Color.CYAN, bloon6.getColor());
+        assertEquals(Color.BLACK, bloon7.getColor());
+        assertEquals(new Color(224, 155, 76), bloon8.getColor());
+        assertEquals(Color.GRAY, bloon9.getColor());
+
+        assertEquals(750, bloon1.getSpeed());
+        assertEquals(650, bloon2.getSpeed());
+        assertEquals(550, bloon3.getSpeed());
+        assertEquals(450, bloon4.getSpeed());
+        assertEquals(350, bloon5.getSpeed());
+        assertEquals(250, bloon6.getSpeed());
+        assertEquals(150, bloon7.getSpeed());
+        assertEquals(1000, bloon8.getSpeed());
+        assertEquals(1500, bloon9.getSpeed());
+    }
+
     @Test
     public void testBloonsPop(){
         Bloon bloon = new Bloon("lead");
@@ -91,75 +123,126 @@ public class BloonTest {
 
 
     }
-     
+
+//    @Test
+//    public void testWin() {
+//        BloonsRunner.round = BloonsRunner.maps.size();
+//        BloonsRunner.phase = "game";
+//        BloonsRunner.gamePhase = "game";
+//        BloonsRunner.currentBloons = BloonsRunner.maps.get(BloonsRunner.maps.size() - 1);
+//        BloonsRunner w1 = new BloonsRunner();
+//        w1.main(new String[]{""});
+//        try { Thread.sleep(1000); }
+//        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+////        try { Thread.sleep(100); }
+////        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+//        assertEquals("won", BloonsRunner.gamePhase);
+//
+//        BloonsWindow w2 = new BloonsWindow();
+//        BloonsRunner.round = BloonsRunner.lastRound - 1;
+//        try { Thread.sleep(100); }
+//        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+//        w2.endRound();
+//        try { Thread.sleep(100); }
+//        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+//        assertNotEquals("won", BloonsRunner.gamePhase);
+//
+//        BloonsWindow w3 = new BloonsWindow();
+//        BloonsRunner.round = 0;
+//        try { Thread.sleep(100); }
+//        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+//        w3.endRound();
+//        try { Thread.sleep(100); }
+//        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+//        assertNotEquals("won", BloonsRunner.gamePhase);
+//
+//        BloonsWindow w4 = new BloonsWindow();
+//        BloonsRunner.round = BloonsRunner.lastRound + 1;
+//        try { Thread.sleep(100); }
+//        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+//        w4.endRound();
+//        try { Thread.sleep(100); }
+//        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+//        assertEquals("won", BloonsRunner.gamePhase);
+//    }
+//
+//    @Test
+//    public void testLoss() {
+//        BloonsWindow w1 = new BloonsWindow();
+//        BloonsRunner.health = 0;
+//        try { Thread.sleep(100); }
+//        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+//        assertEquals("lost", BloonsRunner.gamePhase);
+//
+//        BloonsWindow w2 = new BloonsWindow();
+//        BloonsRunner.health = -1;
+//        try { Thread.sleep(100); }
+//        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+//        assertEquals("lost", BloonsRunner.gamePhase);
+//
+//        BloonsWindow w3 = new BloonsWindow();
+//        BloonsRunner.health = 1;
+//        try { Thread.sleep(100); }
+//        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+//        assertEquals("lost", BloonsRunner.gamePhase);
+//
+//        BloonsWindow w4 = new BloonsWindow();
+//        BloonsRunner.health = 10;
+//        int waitTime = 10 * (BloonsRunner.maps.get(0).size()) + (BloonsRunner.map.getPath().length * BloonsRunner.map.getPath()[0].length);
+//        try { Thread.sleep(waitTime + 100); }
+//        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+//        assertEquals("lost", BloonsRunner.gamePhase);
+//
+//        BloonsWindow w5 = new BloonsWindow();
+////        Bloon[] newBloons = {};
+//        BloonsRunner.health = 0;
+////        BloonsRunner.currentBloons = newBloons;
+//        try { Thread.sleep(10); }
+//        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+//        assertEquals("lost", BloonsRunner.gamePhase);
+//    }
+
     @Test
-    public void testWin() {
-        BloonsWindow w1 = new BloonsWindow();
-        BloonsRunner.round = BloonsRunner.lastRound;
-        try { Thread.sleep(100); }
-        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-        w1.endRound();
-        try { Thread.sleep(100); }
-        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-        assertEquals("won", BloonsRunner.gamePhase);
+    public void testMoney() {
+        int testMoney = BloonsRunner.money;
 
-        BloonsWindow w2 = new BloonsWindow();
-        BloonsRunner.round = BloonsRunner.lastRound - 1;
-        try { Thread.sleep(100); }
-        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-        w2.endRound();
-        try { Thread.sleep(100); }
-        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-        assertNotEquals("won", BloonsRunner.gamePhase);
+        Bloon red = new Bloon("red");
+        Bloon blue = new Bloon("blue");
+        Bloon green = new Bloon("green");
+        Bloon black = new Bloon("black");
+        Bloon lead = new Bloon("lead");
 
-        BloonsWindow w3 = new BloonsWindow();
-        BloonsRunner.round = 0;
-        try { Thread.sleep(100); }
-        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-        w3.endRound();
-        try { Thread.sleep(100); }
-        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-        assertNotEquals("won", BloonsRunner.gamePhase);
+        while(red.layers != 0) {
+            red.pop();
+        }
+        testMoney += 1;
+        assertEquals(BloonsRunner.money, testMoney);
 
-        BloonsWindow w4 = new BloonsWindow();
-        BloonsRunner.round = BloonsRunner.lastRound + 1;
-        try { Thread.sleep(100); }
-        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-        w4.endRound();
-        try { Thread.sleep(100); }
-        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-        assertEquals("won", BloonsRunner.gamePhase);
-    }
 
-    @Test
-    public void testLoss() {
-        BloonsWindow w1 = new BloonsWindow();
-        BloonsRunner.health = 0;
-        try { Thread.sleep(100); }
-        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-        w1.endRound();
-        assertEquals("lost", BloonsRunner.gamePhase);
+        while(blue.layers != 0) {
+            blue.pop();
+        }
+        testMoney += 2;
+        assertEquals(BloonsRunner.money, testMoney);
 
-        BloonsWindow w2 = new BloonsWindow();
-        BloonsRunner.health = -1;
-        try { Thread.sleep(100); }
-        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-        w2.endRound();
-        assertEquals("lost", BloonsRunner.gamePhase);
+        while(green.layers != 0) {
+            green.pop();
+        }
+        testMoney += 3;
+        assertEquals(BloonsRunner.money, testMoney);
 
-        BloonsWindow w3 = new BloonsWindow();
-        BloonsRunner.health = 1;
-        try { Thread.sleep(100); }
-        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-        w3.endRound();
-        assertEquals("lost", BloonsRunner.gamePhase);
+        while(black.layers != 0) {
+            black.pop();
+        }
+        testMoney += 7;
+        assertEquals(BloonsRunner.money, testMoney);
 
-        BloonsWindow w4 = new BloonsWindow();
-        BloonsRunner.health = 10000000;
-        try { Thread.sleep(100); }
-        catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
-        w4.endRound();
-        assertEquals("lost", BloonsRunner.gamePhase);
+        while(lead.layers != 0) {
+            lead.pop();
+        }
+        testMoney += 9;
+        assertEquals(BloonsRunner.money, testMoney);
+
     }
 
 }
