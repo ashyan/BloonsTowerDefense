@@ -291,7 +291,7 @@ public class BloonsWindow extends JPanel implements ActionListener, KeyListener,
 			SuperMonkeySprite.drawPreview(g, BloonsRunner.WIDTH - (BloonsRunner.PATH_WIDTH * 2), BloonsRunner.PATH_WIDTH * 2);
 			g.setFont(new Font("Verdana", Font.BOLD, 10));
 			g.setColor(Color.WHITE);
-			g.drawString("$" + SuperMonkeySprite.price, (BloonsRunner.WIDTH - 50) + 5, (BloonsRunner.PATH_WIDTH * 2) + 25);
+			g.drawString("$" + SuperMonkeySprite.price, (BloonsRunner.WIDTH - 50) -2, (BloonsRunner.PATH_WIDTH * 2) + 25);
 
 			// Draw each currently purchased monkey and its bullets
 			for (MonkeySprite m : MonkeySprite.monkeys) {
